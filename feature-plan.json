@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "current_feature": "project-skeleton",
+  "features": [
+    {
+      "id": "project-skeleton",
+      "title": "Project Skeleton with FastAPI + React + Vite",
+      "status": "done",
+      "acceptance": [
+        "Backend FastAPI app runs and serves health endpoint",
+        "Frontend React + TypeScript + Vite builds successfully",
+        "Docker Compose brings up backend, frontend, Keycloak, PostgreSQL",
+        "CI workflow runs backend tests and frontend build/test"
+      ],
+      "implementation": [
+        "backend/app/main.py",
+        "backend/requirements.txt",
+        "backend/Dockerfile",
+        "frontend/package.json",
+        "frontend/Dockerfile",
+        "compose.yaml",
+        ".github/workflows/ci.yml",
+        ".gitignore",
+        ".env.example",
+        "portfolio.json",
+        "pyproject.toml",
+        "README.md",
+        "LICENSE",
+        "CHANGELOG.md"
+      ],
+      "tests": [
+        "backend/tests/test_health.py",
+        "frontend/src/__tests__/App.test.tsx"
+      ]
+    },
+    {
+      "id": "auth-oidc",
+      "title": "OIDC Authentication with Keycloak (SPA PKCE)",
+      "status": "planned",
+      "acceptance": [
+        "Login redirects to Keycloak with PKCE",
+        "Callback exchanges code for tokens",
+        "Access token used for authorized API calls",
+        "Logout clears session"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "marketplace-core",
+      "title": "Plugin Marketplace Core Domain Engine",
+      "status": "planned",
+      "acceptance": [
+        "CRUD for plugins (harness, category, install command)",
+        "Search/filter by harness, category, tags",
+        "Plugin detail view with install instructions",
+        "Export/import plugin collections"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "skill-audit-engine",
+      "title": "Skill Audit Engine (Static Analysis)",
+      "status": "planned",
+      "acceptance": [
+        "Parses SKILL.md frontmatter and body",
+        "Detects overlapping/vague descriptions",
+        "Reports context cost estimates",
+        "Flags missing files referenced in skill"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "company-context-pack",
+      "title": "Company Context Pack Generator",
+      "status": "planned",
+      "acceptance": [
+        "Interactive interview flow",
+        "Generates context/ folder with agent-readable files",
+        "Marks unknowns and unsourced results explicitly"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "gtm-scorers",
+      "title": "GTM Scorers: Offer Stack & Proof Assets",
+      "status": "planned",
+      "acceptance": [
+        "Offer stack scorer rejects lines with no pain point",
+        "Proof assets scorer rejects claims without source/permission",
+        "Deterministic scoring algorithms"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "pick-gtm-tools",
+      "title": "Pick GTM Tools with MCP Integration",
+      "status": "planned",
+      "acceptance": [
+        "Searches GTM Directory MCP server",
+        "Returns cited tool shortlists",
+        "No API key required"
+      ],
+      "implementation": [],
+      "tests": []
+    }
+  ]
+}

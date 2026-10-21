@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "name": "beacon-studio-alan-vo",
+  "owner": "ALANDVO",
+  "email": "alanvo@gmail.com",
+  "domain": "AI/ML developer tools",
+  "summary": "Work in progress: beacon-studio-alan-vo",
+  "workflows": [
+    "Discover and install agent plugins across 7+ harnesses (Claude Code, Codex, Cursor, OpenCode, GitHub Copilot, Google Antigravity, Pi)",
+    "Audit installed skills for context cost, overlapping descriptions, missing files, and guardrail gaps",
+    "Generate company context packs via guided interview for agent-readable company files",
+    "Score offer stacks and proof assets for pain-point backing and source attribution",
+    "Recommend GTM tools via MCP server integration with cited shortlists"
+  ],
+  "auth": "oidc-keycloak-saml-broker",
+  "llm_providers": [
+    "openai-compatible",
+    "anthropic",
+    "gemini",
+    "ollama"
+  ],
+  "status": "work-in-progress"
+}
