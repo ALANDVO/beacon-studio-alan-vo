@@ -41,3 +41,4 @@ npm-debug.log*
 
 # Docker
 .docker/
+venv/
