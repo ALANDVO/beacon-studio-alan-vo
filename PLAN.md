@@ -4,7 +4,7 @@ Each round completes one feature or repair. Future items are planned, not implem
 
 ## Current round
 
-project-skeleton
+auth-oidc
 
 ## Roadmap
 
@@ -24,13 +24,17 @@ Tests: `backend/tests/test_health.py`, `frontend/src/__tests__/App.test.tsx`
 
 ### auth-oidc — OIDC Authentication with Keycloak (SPA PKCE)
 
-Status: planned
+Status: in_progress
 
 Acceptance:
 - Login redirects to Keycloak with PKCE
 - Callback exchanges code for tokens
 - Access token used for authorized API calls
 - Logout clears session
+
+Implementation: `backend/app/services/auth.py`, `backend/app/api/v1/auth.py`, `backend/app/api/deps.py`, `backend/app/api/v1/router.py`, `backend/app/core/security.py`
+
+Tests: `backend/tests/test_auth.py`
 
 ### marketplace-core — Plugin Marketplace Core Domain Engine
 
