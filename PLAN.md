@@ -83,3 +83,6 @@ Acceptance:
 - Returns cited tool shortlists
 - No API key required
 
+---
+
+Alan Vo · [alanvo.net](https://alanvo.net)

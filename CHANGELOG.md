@@ -51,3 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Company context pack generator (UI integration)
 - GTM scorers (offer stack, proof assets) (UI integration)
 - Pick GTM tools with MCP integration (UI integration)
+
+---
+
+Alan Vo · [alanvo.net](https://alanvo.net)
