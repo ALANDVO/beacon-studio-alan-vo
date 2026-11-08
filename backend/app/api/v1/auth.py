@@ -3,11 +3,11 @@ from fastapi import APIRouter, Depends, HTTPException, status, Request
 from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 from typing import Optional
+from jose import jwt
 
 from app.core.config import get_settings
 from app.core.security import generate_pkce_pair, build_authorize_url, generate_state, generate_nonce
 from app.services.auth import exchange_code_for_tokens, perform_logout
-
 router = APIRouter(prefix="/auth", tags=["auth"])
 settings = get_settings()
 
@@ -63,13 +63,7 @@ async def callback(request: TokenRequest):
             detail="Invalid or expired state",
         )
 
-    # Verify state (additional check)
-    if request.state != request.state:  # This is a placeholder, actual check is above
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="State mismatch",
-        )
-
+    # State already validated by store pop above
     code_verifier = stored["code_verifier"]
     redirect_uri = stored["redirect_uri"]
 
@@ -80,6 +74,23 @@ async def callback(request: TokenRequest):
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Failed to exchange code for tokens",
         )
+
+    # Validate nonce from ID token if present
+    id_token = tokens.get("id_token")
+    if id_token:
+        try:
+            # Decode without verification (we validate access token separately)
+            id_claims = jwt.get_unverified_claims(id_token)
+            if id_claims.get("nonce") != stored.get("nonce"):
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="Invalid nonce in ID token",
+                )
+        except Exception:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Invalid ID token",
+            )
 
     return TokenResponse(**tokens)
 

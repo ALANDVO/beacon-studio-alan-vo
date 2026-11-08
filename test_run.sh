@@ -1,0 +1,1 @@
+cd /var/lib/alan-portfolio/workspaces/alan/beacon-studio-alan-vo/backend && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt && PYTHONPATH=. python -m pytest tests/test_auth.py -v

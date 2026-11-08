@@ -24,7 +24,7 @@ Tests: `backend/tests/test_health.py`, `frontend/src/__tests__/App.test.tsx`
 
 ### auth-oidc — OIDC Authentication with Keycloak (SPA PKCE)
 
-Status: in_progress
+Status: done
 
 Acceptance:
 - Login redirects to Keycloak with PKCE
