@@ -36,7 +36,7 @@
     {
       "id": "auth-oidc",
       "title": "OIDC Authentication with Keycloak (SPA PKCE)",
-      "status": "in_progress",
+      "status": "done",
       "acceptance": [
         "Login redirects to Keycloak with PKCE",
         "Callback exchanges code for tokens",

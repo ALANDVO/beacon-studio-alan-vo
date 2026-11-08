@@ -1,8 +1,34 @@
 # Changelog
 
-## 1.2.0 — work-in-progress checkpoint
+## 1.3.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
+
+## 1.2.0 — work-in-progress checkpoint
+
+### Fixed
+- Backend auth callback endpoint: removed buggy state check (`request.state != request.state` always false)
+- Backend auth callback endpoint: added OIDC nonce validation from ID token
+
+### Added
+- Backend OIDC PKCE authentication flow implementation
+  - `/api/v1/auth/login` — initiates PKCE flow with Keycloak
+  - `/api/v1/auth/callback` — exchanges code for tokens, validates state and nonce
+  - `/api/v1/auth/logout` — performs OIDC logout
+  - `/api/v1/auth/me` — returns current user info (demo mode supported)
+- JWKS client with 1-hour caching for token validation
+- Token exchanger for authorization code exchange with PKCE
+- Role-based access control dependencies (viewer/operator/admin)
+- Demo mode for development (explicit opt-in via DEMO_MODE=true)
+
+### Security
+- PKCE (S256) for authorization code flow
+- State and nonce generation/validation for OIDC
+- Constant-time state comparison
+- Access tokens validated via JWKS from Keycloak
+- In-memory PKCE store (Redis recommended for production)
+
+ Partial code published for continued development. Known issues: STATUS.md.
 
 ## 1.1.0 — work-in-progress checkpoint
 
