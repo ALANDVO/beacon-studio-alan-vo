@@ -7,15 +7,10 @@ from sqlalchemy.ext.asyncio import (
     async_sessionmaker,
     create_async_engine,
 )
-from sqlalchemy.orm import DeclarativeBase
 
 from app.core.config import get_settings
 
 settings = get_settings()
-
-
-class Base(DeclarativeBase):
-    pass
 
 
 engine: AsyncEngine = create_async_engine(
@@ -44,7 +39,6 @@ async def get_session() -> AsyncGenerator[AsyncSession, None]:
             await session.close()
 
 
-@asynccontextmanager
 async def get_session_context() -> AsyncGenerator[AsyncSession, None]:
     async with async_session_maker() as session:
         try:
@@ -58,8 +52,10 @@ async def get_session_context() -> AsyncGenerator[AsyncSession, None]:
 
 
 async def init_db() -> None:
+    from app.models.plugin import Plugin  # noqa: F401 import for metadata registration
+    from app.models.base import Base as ModelBase
     async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+        await conn.run_sync(ModelBase.metadata.create_all)
 
 
 async def close_db() -> None:

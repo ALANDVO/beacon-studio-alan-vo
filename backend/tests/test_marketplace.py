@@ -15,7 +15,7 @@ async def test_plugin_crud():
         APP_ENV="development",
         DEMO_MODE="true",
     )
-    with patch("app.api.deps.get_settings", return_value=mock_settings):
+    with patch("app.core.config.get_settings", return_value=mock_settings):
         async with AsyncClient(
             transport=ASGITransport(app=app), base_url="http://test"
         ) as client:
