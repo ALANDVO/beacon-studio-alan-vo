@@ -4,7 +4,7 @@ Each round completes one feature or repair. Future items are planned, not implem
 
 ## Current round
 
-auth-oidc
+marketplace-core
 
 ## Roadmap
 
@@ -38,13 +38,17 @@ Tests: `backend/tests/test_auth.py`
 
 ### marketplace-core — Plugin Marketplace Core Domain Engine
 
-Status: planned
+Status: in_progress
 
 Acceptance:
 - CRUD for plugins (harness, category, install command)
 - Search/filter by harness, category, tags
 - Plugin detail view with install instructions
 - Export/import plugin collections
+
+Implementation: `backend/app/models/plugin.py`, `backend/app/api/v1/plugins.py`, `backend/tests/test_marketplace.py`
+
+Tests: `backend/tests/test_marketplace.py::test_plugin_crud`, `backend/tests/test_marketplace.py::test_plugin_search`, `backend/tests/test_marketplace.py::test_plugin_filter_by_harness`, `backend/tests/test_marketplace.py::test_plugin_filter_by_category`
 
 ### skill-audit-engine — Skill Audit Engine (Static Analysis)
 

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "current_feature": "auth-oidc",
+  "current_feature": "marketplace-core",
   "features": [
     {
       "id": "project-skeleton",
@@ -57,15 +57,24 @@
     {
       "id": "marketplace-core",
       "title": "Plugin Marketplace Core Domain Engine",
-      "status": "planned",
+      "status": "in_progress",
       "acceptance": [
         "CRUD for plugins (harness, category, install command)",
         "Search/filter by harness, category, tags",
         "Plugin detail view with install instructions",
         "Export/import plugin collections"
       ],
-      "implementation": [],
-      "tests": []
+      "implementation": [
+        "backend/app/models/plugin.py",
+        "backend/app/api/v1/plugins.py",
+        "backend/tests/test_marketplace.py"
+      ],
+      "tests": [
+        "backend/tests/test_marketplace.py::test_plugin_crud",
+        "backend/tests/test_marketplace.py::test_plugin_search",
+        "backend/tests/test_marketplace.py::test_plugin_filter_by_harness",
+        "backend/tests/test_marketplace.py::test_plugin_filter_by_category"
+      ]
     },
     {
       "id": "skill-audit-engine",
